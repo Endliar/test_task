@@ -8,13 +8,13 @@ namespace test_task.Engine
 {
     public class EngineSimulate
     {
-        private double _L;
-        private Dictionary<double, double> _torqueTableMV;
-        private double _T;
-        private double _heatingCoeff;
-        private double _coolingCoeff;
-        private double _CurrTemperature;
-        private double _CurrSpeed;
+        public double _L;
+        public Dictionary<double, double> _torqueTableMV;
+        public double _T;
+        public double _heatingCoeff;
+        public double _coolingCoeff;
+        public double _CurrTemperature;
+        public double _CurrSpeed;
 
 
         public EngineSimulate(double L, Dictionary<double, double> torqueTableMV,
@@ -43,6 +43,7 @@ namespace test_task.Engine
                 double coolingRate = _coolingCoeff * (ambientTemperature - _CurrTemperature);
                 double temperatureChange = heatingRate - coolingRate * dt;
                 _CurrTemperature = temperatureChange;
+                Console.WriteLine("Температура равна:", _CurrTemperature);
                 if (_CurrTemperature >= _T) 
                 {
                     break;
