@@ -39,6 +39,14 @@ namespace test_task
             EngineSimulate engine = new EngineSimulate(10, torqueTableMV, 110, 0.01, 0.0001, 0.1);
             var maxPowerAndSpeed = MaxPowerTestEngine.RunTest(engine);
             Console.WriteLine("Максимальная мощность: {0} л.с., Скорость: {1} об/мин", maxPowerAndSpeed.Item1 * 1.36, maxPowerAndSpeed.Item2);
+
+
+            var timeToOverheat = HeatTestEngine.RunTest(engine, simulationTime, dt, ambientTemperature);
+
+            if (timeToOverheat != -1)
+            {
+                Console.WriteLine("Двигатель перегрелся после {0} секунд работы", timeToOverheat);
+            }
         }
     }
 }
