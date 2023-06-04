@@ -41,7 +41,7 @@ namespace test_task
             Console.WriteLine("Максимальная мощность: {0} л.с., Скорость: {1} об/мин", maxPowerAndSpeed.Item1 * 1.36, maxPowerAndSpeed.Item2);
 
 
-            var timeToOverheat = HeatTestEngine.RunTest(engine, simulationTime, dt, ambientTemperature);
+            var timeToOverheat = HeatTestEngine.RunTest(engine, 0.01, 0.0001, 0.1);
 
             if (timeToOverheat != -1)
             {

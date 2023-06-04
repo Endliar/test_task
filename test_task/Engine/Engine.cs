@@ -37,17 +37,22 @@ namespace test_task.Engine
                 double torque = GetTorque(_CurrSpeed);
                 double acceleration = torque / _L;
                 _CurrSpeed += acceleration * dt;
+                // Мощность двигателя внутреннего сгорания
                 double power = torque * _CurrSpeed / 1000;
-
+                power += power;
+                // Скорость нагрева двигателя
                 double heatingRate = torque * _heatingCoeff + Math.Pow(_CurrSpeed, 2) * _coolingCoeff;
+                //Скорость охлаждения двигателя
                 double coolingRate = _coolingCoeff * (ambientTemperature - _CurrTemperature);
                 double temperatureChange = heatingRate - coolingRate * dt;
                 _CurrTemperature = temperatureChange;
                 Console.WriteLine("Температура равна:", _CurrTemperature);
+                // Перегрев
                 if (_CurrTemperature >= _T) 
                 {
                     break;
                 }
+                
             }
         }
 
